@@ -68,7 +68,7 @@
     <div id="youtube-player"></div>
 
     <div class="container">
-        <h1>Para [Su Nombre]</h1>
+        <h1>diosa divina</h1>
         
         <p>te extraño mi amor <br> 
         hoy te extrañé más que ayer, se volvió mi hábito aunque sé que algún día voy a sanar hoy prefiero disfrutar el pálpito de mi corazón al soñar con tu hermosa alma y no quiero olvidar todos tus besos cuáles hacen de mis huesos olvidar que soy un humano más pues son los mismos que me hacen volar y al recapacitar de este sueño me refuta que es real el amor que siento <br> 
