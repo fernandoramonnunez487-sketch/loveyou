@@ -1,6 +1,5 @@
-# loveyou
-something special
-<!DOCTYPE html>
+# Te amo Guada
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -45,9 +44,9 @@ something special
 <body>
 
     <div class="content">
-        <h1>❤️ Para [Su Nombre] ❤️</h1>
-        <p>Dicen que las mejores cosas de la vida no se planean... simplemente pasan, como tú en mi vida.</p>
-        <p>¡Eres increíble!</p>
+        <h1>❤️ te extraño ❤️</h1>
+        <p>hoy te extrañé más que ayer, se volvió mi hábito aunque sé que algún día voy a sanar hoy prefiero disfrutar el pálpito de mi corazón al soñar con tu hermosa alma y no quiero olvidar todos tus besos cuáles hacen de mis huesos olvidar que soy un humano más pues son los mismos que me hacen volar y al recapacitar de este sueño me refuta que es real el amor que siento</p>
+        <p>mi diosa mi todo</p>
     </div>
 
     <script>
