@@ -2,120 +2,147 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Ti</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Te amo Guada</title>
     <style>
-        /* FONDO ROJO Y NEGRO MINIMALISTA */
+        /* AJUSTES PARA MÓVIL */
+        * { box-sizing: border-box; }
+        
         body {
             margin: 0;
             padding: 0;
-            background: radial-gradient(circle, #2c0000 0%, #000000 100%);
-            font-family: 'serif';
+            background: radial-gradient(circle, #3d0000 0%, #000000 100%);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             color: #ffffff;
             text-align: center;
+            overflow: hidden; /* Evita scrolls raros en móvil */
         }
 
         .container {
-            max-width: 80%;
-            padding: 20px;
+            width: 90%;
+            max-width: 400px; /* Tamaño ideal de un celular */
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 77, 109, 0.4);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
         h1 {
             color: #ff4d6d;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
             text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+            animation: pulse 2s infinite;
         }
 
-        p {
-            font-size: 1.2rem;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .poema {
+            font-size: 1rem;
             line-height: 1.6;
             color: #e0e0e0;
+            font-style: italic;
             margin-bottom: 30px;
+            word-wrap: break-word;
         }
 
-        /* BOTÓN DE MÚSICA */
+        /* BOTÓN MÁS GRANDE PARA MÓVIL */
         .music-btn {
-            background-color: transparent;
-            color: #ff4d6d;
-            border: 2px solid #ff4d6d;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .music-btn:hover {
             background-color: #ff4d6d;
             color: white;
-            box-shadow: 0 0 20px rgba(255, 77, 109, 0.6);
+            border: none;
+            padding: 18px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        #youtube-player {
-            display: none;
+        /* Contenedor del video invisible */
+        #player-container {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-    <div id="youtube-player"></div>
+    <div id="player-container">
+        <div id="player"></div>
+    </div>
 
     <div class="container">
-        <h1>diosa divina</h1>
+        <h1>Te amo Guada</h1>
         
-        <p>te extraño mi amor <br> 
-        hoy te extrañé más que ayer, se volvió mi hábito aunque sé que algún día voy a sanar hoy prefiero disfrutar el pálpito de mi corazón al soñar con tu hermosa alma y no quiero olvidar todos tus besos cuáles hacen de mis huesos olvidar que soy un humano más pues son los mismos que me hacen volar y al recapacitar de este sueño me refuta que es real el amor que siento <br> 
-        te amo Guada.</p>
+        <div class="poema">
+            Hoy te extrañé más que ayer, 
+            se volvió mi hábito aunque sé que algún día voy a sanar...<br><br>
+            Hoy prefiero disfrutar el pálpito de mi corazón al soñar 
+            con tu hermosa alma y no quiero olvidar todos tus besos, 
+            cuáles hacen de mis huesos olvidar que soy un humano más...<br><br>
+            Pues son los mismos que me hacen volar 
+            y al recapacitar de este sueño 
+            me refuta que es real el amor que siento.
+        </div>
         
-        <button class="music-btn" onclick="toggleMusic()" id="musicControl">🎵 Nuestra Canción</button>
+        <button class="music-btn" onclick="playMusic()" id="btnText">
+            <span>▶</span> REPRODUCIR CANCIÓN
+        </button>
     </div>
 
     <script>
-        // --- Configuración de la Música (YouTube) ---
-        // REEMPLAZA ESTO por el ID de tu video (lo que va después de v=)
-        const YOUTUBE_VIDEO_ID = 'MDSZK3PSjlY'; 
-
+        // ID de Cafuné
+        const videoId = 'MDSZK3PSjlY';
         let player;
-        let isPlaying = false;
 
+        // Cargar API de YouTube
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         function onYouTubeIframeAPIReady() {
-            player = new YT.Player('youtube-player', {
-                height: '0',
-                width: '0',
-                videoId: YOUTUBE_VIDEO_ID,
+            player = new YT.Player('player', {
+                height: '1',
+                width: '1',
+                videoId: videoId,
                 playerVars: {
-                    'autoplay': 0,
+                    'playsinline': 1, // Vital para que funcione en móviles sin abrir la app
                     'controls': 0,
-                    'loop': 1,
-                    'playlist': YOUTUBE_VIDEO_ID
+                    'disablekb': 1
+                },
+                events: {
+                    'onReady': onPlayerReady
                 }
             });
         }
 
-        function toggleMusic() {
-            const btn = document.getElementById('musicControl');
-            if (!player) return;
+        function onPlayerReady(event) {
+            console.log("Reproductor listo");
+        }
 
-            if (!isPlaying) {
+        function playMusic() {
+            if (player && player.playVideo) {
                 player.playVideo();
-                btn.innerHTML = '⏸ Pausar Música';
-                isPlaying = true;
-            } else {
-                player.pauseVideo();
-                btn.innerHTML = '🎵 Nuestra Canción';
-                isPlaying = false;
+                document.getElementById('btnText').style.display = 'none'; // Oculta el botón tras dar play para que no estorbe
             }
         }
     </script>
