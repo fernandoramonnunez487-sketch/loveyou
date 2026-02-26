@@ -70,9 +70,9 @@
     <div class="container">
         <h1>Para [Su Nombre]</h1>
         
-        <p>"Te extraño mi amor <br> 
+        <p>te extraño mi amor <br> 
         hoy te extrañé más que ayer, se volvió mi hábito aunque sé que algún día voy a sanar hoy prefiero disfrutar el pálpito de mi corazón al soñar con tu hermosa alma y no quiero olvidar todos tus besos cuáles hacen de mis huesos olvidar que soy un humano más pues son los mismos que me hacen volar y al recapacitar de este sueño me refuta que es real el amor que siento <br> 
-        te amo."</p>
+        te amo Guada.</p>
         
         <button class="music-btn" onclick="toggleMusic()" id="musicControl">🎵 Nuestra Canción</button>
     </div>
@@ -80,7 +80,7 @@
     <script>
         // --- Configuración de la Música (YouTube) ---
         // REEMPLAZA ESTO por el ID de tu video (lo que va después de v=)
-        const YOUTUBE_VIDEO_ID = 'B-QClDztaO8&si=5fBcJtsch-kiPenM'; 
+        const YOUTUBE_VIDEO_ID = 'MDSZK3PSjlY'; 
 
         let player;
         let isPlaying = false;
